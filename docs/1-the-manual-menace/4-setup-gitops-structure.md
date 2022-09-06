@@ -131,8 +131,10 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    4c. Argocd apps folder contains three files with the above manifests specified
-        ![gitops-folder-structure](images/gitops-folder-structure.png)
+    4c. Argocd apps folder contains three files with the above manifests specified.     
+<p align="center" width="100%">
+    <img width="33%" src="images/gitops-folder-structure.png">
+</p>
 
 5. Finally push these changes to the remote
 
