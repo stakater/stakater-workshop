@@ -132,6 +132,7 @@ Lets get started,
             selfHeal: true
 
     4c. Argocd apps folder contains three files with the above manifests specified
+        ![gitops-folder-structure](../images/gitops-folder-structure.png)
 
 5. Finally push these changes to the remote
 
