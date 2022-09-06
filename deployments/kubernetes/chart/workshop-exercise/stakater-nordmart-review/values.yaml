@@ -1,0 +1,185 @@
+application: 
+
+  applicationName: review
+
+ # Deployment
+  deployment:
+    fluentdConfigAnnotations:
+      notifications:
+        slack:
+          webhookURL: https://hooks.slack.com/services/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
+          channelName: "#nordmart-gabbar-application-alerts"
+        key: "level"
+        pattern: "(ERROR|ERR|error|E[A-Z0-9]{4})"
+    additionalLabels:
+      appCategory: backend
+    imagePullSecrets: nexus-docker-config-forked
+    envFrom:
+      review-config:
+        type: configmap
+        nameSuffix: config  
+    image:
+      repository: review
+      tag: any-version
+    resources: 
+      limits:
+        memory: 1Gi 
+        cpu: 0.6
+      requests:
+        memory: 128Mi
+        cpu: 0.1
+    probes:
+      readinessProbe:
+        failureThreshold: 3
+        periodSeconds: 60
+        successThreshold: 1
+        timeoutSeconds: 1
+        initialDelaySeconds: 10
+        httpGet:
+          path: /actuator/health
+          port: 8080
+      livenessProbe:
+        failureThreshold: 3
+        periodSeconds: 60
+        successThreshold: 1
+        timeoutSeconds: 1
+        initialDelaySeconds: 10
+        httpGet:
+          path: /actuator/health
+          port: 8080
+
+
+  ## Prometheus Rule to trigger alerts based on ratings
+  prometheusRule:
+    enabled: true
+    additionalLabels:
+      prometheus: stakater-workload-monitoring
+    groups:
+      - name: nordmart-review-low-rating-warning
+        rules:
+          - alert: NordmartReviewLowRatingsCritical
+            annotations:
+              message: >-
+                Total ratings below 2 has crossed the threshold 8. Total reviews: {{ $value }}.
+            expr: >
+              sum by (namespace) (nordmart_review_ratings_total{rating="2"} or nordmart_review_ratings_total{rating="1"}) > 8
+            labels:
+              severity: critical
+
+  ## Alert manager Configuration to send the alerts
+  alertmanagerConfig:
+    enabled: true
+    selectionLabels:
+      alertmanagerConfig: workload
+    spec:
+      receivers:
+        - name: nordmart-review-receiver
+          slackConfigs:
+            - apiURL:
+                key: api_url
+                name: review-slack-webhook
+              channel: '#nordmart-gabbar-application-alerts'
+              sendResolved: true
+              text: |2-
+                {{ range .Alerts }}
+                *Alert:* `{{ .Labels.severity | toUpper }}` - {{ .Annotations.summary }}
+                *Description:* {{ .Annotations.description }}
+                *Details:*
+                  {{ range .Labels.SortedPairs }} *{{ .Name }}:* `{{ .Value }}`
+                  {{ end }}
+                {{ end }}
+              title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] SAAP Alertmanager Event Notification'
+              httpConfig:
+                tlsConfig:
+                  insecureSkipVerify: true
+      route:
+        groupBy:
+          - alertname
+          - severity
+        groupInterval: 3m
+        groupWait: 30s
+        repeatInterval: 6h
+        matchers:
+          - name: alertname
+            value: NordmartReviewLowRatingsCritical
+        receiver: nordmart-review-receiver
+
+  sealedSecret:
+    enabled: true
+    annotations:
+      sealedsecrets.bitnami.com/cluster-wide: "true"
+    files:
+      slack-webhook:
+        encryptedData:
+          api_url: AgBufrsb7WLTF2/NrCmkrew8nzflHeAST8aAtnB6ESuN39k64k4qiK8xjaerLKk6UTvUfpByuXHA3wnCjHdnlfEh9tN7Eqx7hdO9ist7qJcQM6nQJ1WW6YaoAATMIjoidyyoclMjnnswFGj8hj6xdeA0UppnFJ/ywcumf93dX/ePIXAuB5u0L3IwwRg3lVkTSx09h7kvwNXNpkZKANjzvO7b4nPD9LMPCjEd9i9W6hvF6NG1/SOAZu010XsySUDCOHVDc9YG0SC/OUwyDpPcU3vT4RM3pFeINzSI7ZeXKrmj9PfrKQWW0ustBe3ysIzEqVeQaVjnYw5fHmNiBQoJDfz5aMDxnRYOphSGspCk11pBywlIYNgZGtpQPFhr0w+qLqLIyf5NazFiY0XHUDUeZhYtZM4MFleEuHjJIBX41BOEOrkSOzwv8AgpANi3zPXq2dre+pDKUeJzUZ+CsbEgLtCrKNVAK3Ny7cruhV8T5uECO9PawNynbAJ2TGjXMTjKYk1YCO/XZ2JB/ciI2ICWYZ8eAm3McOsbeRhpkrLvdx11/uBTzxvqVv60vrjuwRbhjBJN70mZ92Q1ho7yAWsS4Ru3Deaq2iZhX72uYo0sHSygp6rsTEcAqeUW4hrCINQn14RYwmBtJa/sbMjDEBFeGwIUXuvKp0gMLmoj2qCHuGey064aJavmtpi2FkBlsAYQjenYfub0OMcT69Svp655hElyIEAwgoR/j9JxsAbwqdX/7y6fI7b+0ci3jiQECncgSHnuYK9HT6UIKo2fKLYU7py6/6QPlzMeybA/S9QCzcjD
+
+  ## ConfigMap
+  configMap:
+    enabled: true
+    files:
+      config:
+        DB_NAME: "nordmartDB"
+        MONGO_HOST: "review-mongodb"
+
+  ## RBAC
+  rbac:
+    serviceAccount:
+      enabled: true
+     
+  ## Service     
+  service:
+    ports:
+    - name: http
+      port: 8080     
+      targetPort: 8080
+
+  ## Route
+  route:
+    enabled: true
+    port:
+      targetPort: http
+
+  ## Service Monitor
+  serviceMonitor:
+    enabled: true
+    
+  ## Endpoint Montior
+  endpointMonitor:
+    enabled: true
+    # add uptime robot additional config
+    additionalConfig:
+      uptimeRobotConfig:
+        alertContacts: "3514554"
+        keywordExists: 'yes'
+        keywordValue: '404'
+        monitorType: keyword
+
+#####################
+# MongoDB dependency
+#####################
+mongodb:
+
+  fullnameOverride: review-mongodb  
+  
+  resources: 
+     limits:
+       memory: 1Gi 
+       cpu: 0.5
+     requests:
+       memory: 128Mi
+       cpu: 0.1
+       
+  auth:
+    enabled: false
+
+  podSecurityContext:
+    enabled: false
+
+  containerSecurityContext:
+    enabled: false
+
+#####################
+# Grafana dashboard
+#####################
+grafanaDashboard:
+  enabled: true

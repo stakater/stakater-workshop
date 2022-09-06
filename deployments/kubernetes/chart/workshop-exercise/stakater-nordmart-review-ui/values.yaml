@@ -1,0 +1,67 @@
+application:
+  applicationName: "review-web"
+  deployment:
+    imagePullSecrets: nexus-docker-config-forked
+    additionalLabels:
+      appCategory: "frontend"
+    additionalPodAnnotations:
+      sidecar.istio.io/inject: "true"
+      sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    podLabels:
+      maistra.io/expose-route: "true"
+    volumes: {}
+    image:
+      repository: REPLACED_BY_CI_PIPELINE
+      tag: REPLACED_BY_CI_PIPELINE
+    env:
+      PORT:
+        value: "4200"
+      REVIEW_API:
+      # This is hardcoded!
+        value: "https://review-gabbar-dev.apps.devtest.vxdqgl7u.kubeapp.cloud"
+    probes:
+      readinessProbe:
+        failureThreshold: 3
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+        initialDelaySeconds: 10
+        httpGet:
+          path: /health
+          port: 4200
+      livenessProbe:
+        failureThreshold: 3
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+        initialDelaySeconds: 10
+        httpGet:
+          path: /health
+          port: 4200
+
+  service:
+    ports:
+    - port: 8080
+      name: http
+      protocol: TCP
+      targetPort: 4200
+
+  rbac:
+    serviceAccount:
+      enabled: true
+
+  route:
+    enabled: true
+
+  forecastle:
+    enabled: true
+    displayName: "Review Web"
+    group: "Nordmart"
+
+  ## Endpoint Montior
+  endpointMonitor:
+    enabled: true
+    # add uptime robot additional config
+    additionalConfig:
+      uptimeRobotConfig:
+        alertContacts: "3514554"
