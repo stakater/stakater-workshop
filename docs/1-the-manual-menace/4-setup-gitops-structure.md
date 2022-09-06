@@ -2,7 +2,6 @@
 
 This section is focused on creating a gitops structure for your tenant that will contains application helm charts, tekton pipelines and their respective argocd applications.
 
-<br>
 We will create the following types of folders in our gitops repo you ve made in section:
 
 1. **For Each Application**
@@ -12,7 +11,6 @@ This folder will contain the pipeline to be run for application.
 3. **For ArgoCD Apps**
 The folder contains argocd applications for all applications & pipelines.  
 
-<br>
 Lets get started,
 
 1. Lets clone our gitops repo that we created in the previous section 1b.
