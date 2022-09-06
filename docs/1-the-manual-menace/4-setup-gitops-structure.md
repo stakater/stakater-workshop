@@ -1,5 +1,4 @@
-# Setup GitOps Structure
-
+# Setup GitOps Repository Structure
 This section is focused on creating a gitops structure for your tenant that will contains application helm charts, tekton pipelines and their respective argocd applications.
 
 <br>
