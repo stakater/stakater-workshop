@@ -2,13 +2,13 @@
 This section is focused on creating a gitops structure for your tenant that will contains application helm charts, tekton pipelines and their respective argocd applications.
 
 <br>
-We will create the following types of folders in our gitops repo you ve made in section
+We will create the following types of folders in our gitops repo you ve made in section:
 
-- **For Each Application**
+1. **For Each Application**
 This folder will contain application helm chart which will be updated with newly built image whenever main of application repo is updated. 
-- **For Tekton Manifests**
+2. **For Tekton Manifests**
 This folder will contain the pipeline to be run for application.
-- **For ArgoCD Apps**
+3. **For ArgoCD Apps**
 The folder contains argocd applications for all applications & pipelines.  
 
 <br>
@@ -28,7 +28,7 @@ Lets get started,
         mkdir stakater-nordmart-review-ui
         touch stakater-nordmart-review-ui/.gitkeep
 
-        mkdir stakater-nordmart-review-ui
+        mkdir stakater-nordmart-review
         touch stakater-nordmart-review/.gitkeep
 
 3. Lets create a tekton pipelines folder and it will contain our manifests for pipeline for our nordmart review and nordmart review ui applications.
