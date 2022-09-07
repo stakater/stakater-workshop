@@ -67,7 +67,7 @@ Lets get started,
 
     Using the above template, we will create 3 new files with our two nordmart applications and 1 tekton pipeline application.
 
-    Create an argocd for our stakater-nordmart-review-ui application inside argocdcd-apps folder:
+    Create an argocd app */00-argocd-apps/stakater-nordmart-review-ui.yaml* for our stakater-nordmart-review-ui application inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -80,7 +80,7 @@ Lets get started,
             server: 'https://kubernetes.default.svc'
         project: workshop-exercise
         source:
-            path: stakater-nordmart-review-ui
+            path: 02-stakater-nordmart-review-ui
             repoURL: https://gitlab.com/workshop-exercise/nordmart-gitops
             targetRevision: HEAD
         syncPolicy:
@@ -88,7 +88,7 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    Create an argocd for our stakater-nordmart-review application inside argocdcd-apps folder:
+    Create an argocd app */00-argocd-apps/stakater-nordmart-review.yaml* for our stakater-nordmart-review application inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -101,7 +101,7 @@ Lets get started,
             server: 'https://kubernetes.default.svc'
         project: workshop-exercise
         source:
-            path: stakater-nordmart-review
+            path: 03-stakater-nordmart-review
             repoURL: https://gitlab.com/workshop-exercise/nordmart-gitops
             targetRevision: HEAD
         syncPolicy:
@@ -109,7 +109,7 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    Create an argocd for tekton pipelines inside argocdcd-apps folder:
+    Create an argocd app */00-argocd-apps/tekton-pipelines.yaml* for tekton pipelines inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -122,7 +122,7 @@ Lets get started,
             server: 'https://kubernetes.default.svc'
         project: workshop-exercise
         source:
-            path: tekton-pipeline
+            path: 01-tekton-pipelines
             repoURL: https://gitlab.com/workshop-exercise/nordmart-gitops
             targetRevision: HEAD
         syncPolicy:
