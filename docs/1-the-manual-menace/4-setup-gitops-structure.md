@@ -1,4 +1,4 @@
-# Setup GitOps Repository Structure
+# Setup GitOps Repository Structure :rocket: :rocket:
 
 This section is focused on creating a gitops structure for your tenant that will contains application helm charts, tekton pipelines and their respective argocd applications.
 
