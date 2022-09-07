@@ -18,32 +18,32 @@ Lets get started,
         # git clone https://gitlab.com/<group-name>/<gitops-repo>
         git clone https://gitlab.com/workshop-exercise/nordmart-gitops
 
-2. Add folder for our apps we cloned in previous section 1b. Run following commands:
+2. Now lets create argocd apps folder that will point to our application & pipelines directory and make sure that resource manifest inside these are deployed and synced in the cluster
+
+        # mkdir <argocd-apps-dir-name>
+        mkdir 00-argocd-apps
+        touch 00-argocd-apps/.gitkeep
+
+3. Lets create a tekton pipelines folder and it will contain our manifests for pipeline for our nordmart review and nordmart review ui applications.
+
+        # mkdir <tekton-manifests-dir-name>
+        mkdir 01-tekton-pipelines
+        touch 01-tekton-pipelines/.gitkeep
+
+4. Add folder for our apps we cloned in previous section 1b. Run following commands:
 
         # cd <gitops-repo-name>
         cd nordmart-gitops
 
         # mkdir <app-name>
-        mkdir stakater-nordmart-review-ui
-        touch stakater-nordmart-review-ui/.gitkeep
+        mkdir 02-stakater-nordmart-review-ui
+        touch 02-stakater-nordmart-review-ui/.gitkeep
 
-        mkdir stakater-nordmart-review
-        touch stakater-nordmart-review/.gitkeep
+        mkdir 03-stakater-nordmart-review
+        touch 03-stakater-nordmart-review/.gitkeep
 
-3. Lets create a tekton pipelines folder and it will contain our manifests for pipeline for our nordmart review and nordmart review ui applications.
+5. For each folder present at root level (application folders,tekton-pipeline) , create an argocd application inside this folder using the template given below. This will create an application inside argocd which will make sure the manifests in these folder are deployed and synced inside our cluster. 
 
-        # mkdir <tekton-manifests-dir-name>
-        mkdir tekton-pipeline
-        touch tekton-pipeline/.gitkeep
-
-4. Now lets create argocd apps folder that will point to our application & pipelines directory and make sure that resource manifest inside these are deployed and synced in the cluster
-
-        # mkdir <argocd-apps-dir-name>
-        mkdir argocd-apps
-        touch argocd-apps/.gitkeep
-
-    4.a For each folder present at root level (application folders,tekton-pipeline) , create an argocd application inside this folder. This will create an application inside argocd which will make sure the manifests in these folder are deployed and synced inside our cluster. 
-    
     Following is the argocd app template:
 
         apiVersion: argoproj.io/v1alpha1
@@ -65,8 +65,9 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    4.b Using the above template, we will create 3 new files with our two nordmart applications and 1 tekton pipeline application.
-    Manifest1:
+    Using the above template, we will create 3 new files with our two nordmart applications and 1 tekton pipeline application.
+
+    Create an argocd for our stakater-nordmart-review-ui application inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -87,7 +88,7 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    Manifest2:
+    Create an argocd for our stakater-nordmart-review application inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -108,7 +109,7 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    Manifest3:
+    Create an argocd for tekton pipelines inside argocdcd-apps folder:
 
         apiVersion: argoproj.io/v1alpha1
         kind: Application
@@ -129,12 +130,12 @@ Lets get started,
             prune: true
             selfHeal: true
 
-    4c. Argocd apps folder contains three files with the above manifests specified.     
+    Argocd apps folder contains three files with the above manifests specified.     
 <p align="center" width="100%">
     <img width="33%" src="images/gitops-folder-structure.png">
 </p>
 
-5. Finally push these changes to the remote
+6. Finally push these changes to the remote
 
         git push origin main
         or
