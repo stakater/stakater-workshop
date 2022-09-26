@@ -8,7 +8,6 @@
 
 SAAP cluster is shipped with a `kube-lint` task that uses KubeLinter and Helm to verify the YAML files. We will be using this task to integrate KubeLinter in our pipeline.
 
-Follow the below-mentioned procedure to add KubeLinter to the already deployed main-pr-v1 pipeline.
 
 1. To view the already defined SonarQube cluster task, open up the `Pipelines` section from the left menu and click `Tasks`
 

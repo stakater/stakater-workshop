@@ -38,7 +38,7 @@
 
 4. Now head over to argocd and refresh <TENANT_NAME>-dev application. You should be able to see allure resources being deployed
 
-![allure-argocd](./images/allure-argocd.png)
+    ![allure-argocd](./images/allure-argocd.png)
 
 You should see the Allure UI come up in a few moments after ArgoCD syncs it. You can browse the default project on Allure to verify it's up and running 
 
