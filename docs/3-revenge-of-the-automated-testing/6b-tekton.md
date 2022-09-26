@@ -17,13 +17,14 @@ This is the URL for your application.
 ```
 Now that you have both the URLs require. Let's add our task to the pipeline.
 
-3. Open the Chart we added to `00-tekton-pipelines` folder in section 2.
+3. Open the Chart we added to `00-tekton-pipelines` folder in section 
+
    ![images/pipelines-Nordmart-apps-GitOps-config](images/pipelines-nordmart-apps-gitops-config.png)
 
 4. Open the values file in the editor. After the `stakater-gitlab-update-cd-repo-v1`. We need to add a couple of params as well. `app_url` and `allure_host`
 Replace <APP_URL> with the URL you obtained from step 1.
 Replace <ALLURE_HOST> with URL you obtained from step 2.
-```
+```yaml
 - defaultTaskName: stakater-zap-proxy-v1
   params:
     - name: app_url
