@@ -2,11 +2,16 @@
 
 Built on the open Eclipse Che project, Red Hat OpenShift Dev Spaces uses Kubernetes and containers to provide any member of the development or IT team with a consistent, secure, and zero-configuration development environment. The experience is as fast and familiar as an integrated development environment on your laptop.
 
-OpenShift Dev Spaces is included with your OpenShift subscription and is available in the Operator Hub. It provides development teams a faster and more reliable foundation on which to work, and it gives operations centralized control and peace of mind.
+Red Hat OpenShift Dev Spaces provides developer workspaces with everything you need to code, build, test, run, and debug applications:
+
+- Project source code
+- Web-based integrated development environment (IDE)
+- Tool dependencies needed by developers to work on a project
+- Application runtime: a replica of the environment where the application runs in production
+
+Pods manage each component of a OpenShift Dev Spaces workspace. Therefore, everything running in a OpenShift Dev Spaces workspace is running inside containers. This makes a OpenShift Dev Spaces workspace highly portable.
 
 Read More at https://access.redhat.com/products/red-hat-openshift-dev-spaces
-
-## How we have setup devworkspaces (briefly)
 
 A devworkspace is created automatically whenever a new user signs up as discussed in the previous section.
 
@@ -18,7 +23,7 @@ In order to access your users devworkspace. Do the following steps:
 
     --- Add Image ---
 
-3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called <TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox on the top e.g. if your are registered as rasheed@stakater.com, project name will be rasheed-rasheed-stakater-sandbox.
+3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called `<TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox` on the top e.g. if your are registered as rasheed@stakater.com, project name will be rasheed-rasheed-stakater-sandbox.
 
     --- Add Image ---
 
@@ -43,5 +48,7 @@ Your user is already logged to the cluster in the devworkspace. If you still hav
     --- Add Image ---
 
 You are now successfully logged into the cluster.
+
 ## Switch between projects
 
+We specified the gitlab repositories deployed for your user into our devworkspace as projects. You
