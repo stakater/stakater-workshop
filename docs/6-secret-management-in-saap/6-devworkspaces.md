@@ -19,7 +19,7 @@ A devworkspace is created automatically whenever a new user signs up as discusse
 
 1. Find the URL to openshift console via forecastle and Login to the cluster.
 
-    --- Add Image ---
+    ![forecastle-openshift-console](images/forecastle-openshift-console.png)
 
 3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called `<TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox` on the top bar e.g. if you are registered as rasheed@stakater.com, project name will be `rasheed-rasheed-stakater-sandbox`.
 
@@ -35,13 +35,13 @@ Your user is already logged to the cluster in the devworkspace. If you still hav
 
 1. Find the URL to openshift console via forecastle and Login to the cluster.
 
-    --- Add Image ---
+    ![forecastle-openshift-console](images/forecastle-openshift-console.png)
 
 2. Hover over the User Name displayed at top right corner of openshift console and select `Copy Login Command` from drop down menu. Click `Display` and copy the oc login command.
 
-    --- Add Image ---
+    ![console-copy-login-command](images/console-copy-login-command.png)
 
-3. Open terminal on your DevSpace by pressing Ctrl+Shift+` or clicking Options > Terminal > New Terminal as highlighted below and paste the command copied in the previous step.
+3. Open terminal on your DevSpace by pressing ` Ctrl+` ` or clicking Options > Terminal > New Terminal as highlighted below and paste the command copied in the previous step.
 
     --- Add Image ---
 
