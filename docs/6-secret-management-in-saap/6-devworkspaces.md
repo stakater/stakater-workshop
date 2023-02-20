@@ -49,4 +49,4 @@ You are now successfully logged into the cluster.
 
 ## Switch between projects
 
-We specified the gitlab repositories deployed for your user into our devworkspace as projects. You
+We specified the Gitlab repositories deployed for your user into our Devworkspace as projects. 
