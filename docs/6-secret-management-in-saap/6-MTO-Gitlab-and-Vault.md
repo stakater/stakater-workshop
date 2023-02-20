@@ -50,15 +50,15 @@ This is the namespace in which we will be deploying our demo app in section 3. F
 
 ## Tenant-Vault Integration
 
-Tenant vault access enabled
-Path created in vault for adding secrets
-OIDC configured as a login mechanism
+* Tenant vault access enabled
+* Path created in vault for adding secrets
+* OIDC configured as a login mechanism
 
 ## Gitlab Automation 
 
-Added group
-Cloned projects
-Added gitops repo
+* Added group
+* Cloned projects
+* Added gitops repo
 _TODO_
 
 ## Devworkspace Creation
@@ -71,5 +71,5 @@ We have already linked the projects added in Gitlab to your devworkspace. More o
 
 ## Argocd Application
 
-Apps of apps for gitops repo
+* Apps of apps for gitops repo
  _TODO_
