@@ -13,17 +13,15 @@ Pods manage each component of a OpenShift Dev Spaces workspace. Therefore, every
 
 Read More at https://access.redhat.com/products/red-hat-openshift-dev-spaces
 
-A devworkspace is created automatically whenever a new user signs up as discussed in the previous section.
-
 ## How to access
 
-In order to access your users devworkspace. Do the following steps:
+A devworkspace is created automatically whenever a new user signs up as discussed in the previous section. In order to access your users devworkspace, do the following steps:
 
 1. Find the URL to openshift console via forecastle and Login to the cluster.
 
     --- Add Image ---
 
-3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called `<TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox` on the top e.g. if your are registered as rasheed@stakater.com, project name will be rasheed-rasheed-stakater-sandbox.
+3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called `<TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox` on the top bar e.g. if you are registered as rasheed@stakater.com, project name will be `rasheed-rasheed-stakater-sandbox`.
 
     --- Add Image ---
 
