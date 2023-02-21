@@ -41,7 +41,7 @@ You can view these projects in bottom left window named `Che (workspace)`. Brows
 
 ## Accessing the terminal
 
-Open terminal on your DevSpace by pressing ` Ctrl+` ` or clicking Terminal > New Terminal from top menu as highlighted below. 
+Open terminal on your DevSpace by pressing `` Ctrl+` `` or clicking Terminal > New Terminal from top menu as highlighted below. 
 
 ![devspace-new-terminal](images/devspace-new-terminal.png)
 
