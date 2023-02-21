@@ -174,7 +174,6 @@ Following is detailed step by step sequence diagram of MTO works together with V
         target:
           name: review-ui
           creationPolicy: 'Owner'
-          deletionPolicy: Retain
           template:
             type: Opaque
         dataFrom:
@@ -274,12 +273,8 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    4. External Secrets Operator (ESO) uses defined deletion policy from ExternalSecret CR to either retain or delete the Kubernetes Secret.
 
-   ```
-      deletionPolicy: Retain
-   ``` 
-
-   - If deletion policy is set to `Retain`, Kubernetes Secret will not be deleted even after secret data on the defined path is removed from Vault.
-   - If deletion policy is set to `Delete`, Kubernetes Secret will be deleted and application will fall back to using default values.  
+      - If deletion policy is set to `Retain`, Kubernetes Secret will not be deleted even after secret data on the defined path is removed from Vault.
+      - If deletion policy is set to `Delete`, Kubernetes Secret will be deleted and application will fall back to using default values.  
 
 ## 🖼️ Big Picture
 
