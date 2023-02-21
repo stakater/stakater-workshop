@@ -59,9 +59,4 @@ Great! Now that we know our `Nordmart Review` backend is working, lets deploy th
 
     ![nortmart-review-ui](./images/nordmart-review-ui.png)
 
-## 🖼️ Big Picture
-
-Great Work, Now that we have deployed our application, we can move on to our main topic secrets management.
-
-## 🔮 Learning Outcomes
 

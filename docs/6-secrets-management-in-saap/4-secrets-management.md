@@ -275,8 +275,3 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
       - If deletion policy is set to `Retain`, Kubernetes Secret will not be deleted even after secret data on the defined path is removed from Vault.
       - If deletion policy is set to `Delete`, Kubernetes Secret will be deleted and application will fall back to using default values.  
-
-## 🖼️ Big Picture
-
-## 🔮 Learning Outcomes
-
