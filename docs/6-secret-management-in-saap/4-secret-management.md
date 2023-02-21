@@ -13,7 +13,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
 ### Workflow
 
 1. Administrator creates a Tenant on the cluster.
-2. Multi Tenant Operator (MTO) enables a kv path for the Tenant. Login to Vault to view your tenant kv.
+2. Multi Tenant Operator (MTO) enables a key value (kv) path for the Tenant. Login to Vault to view your tenant key value (kv) path.
    - Access Vault from  [Forecastle](https://forecastle-stakater-forecastle.apps.devtest.vxdqgl7u.kubeapp.cloud) console, search `Vault` and open the `Vault` tile.
 
       ![Forecastle-Vault](./images/forecastle-vault.png)
@@ -21,11 +21,11 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
       ![Vault-ocic-login](./images/vault-ocic-login.png)
 
-   - You will be brought to the `Vault` console. You should see the kv path for your tenant.
+   - You will be brought to the `Vault` console. You should see the key value (kv) path for your tenant.
 
       ![Vault-home](./images/vault-home.png)
 
-3. Multi Tenant Operator (MTO) creates policies with read and admin permissions over the tenant kv.
+3. Multi Tenant Operator (MTO) creates policies with read and admin permissions for the tenant key value (kv) path.
 
        // Read Policy for ServiceAccounts named <TENANT_NAME>-read
 
@@ -44,7 +44,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
        path "managed-addons/*" {
             capabilities = ["read", "list"]
        }      
-4. Multi Tenant Operator (MTO) creates required Namespaces with tenant labels e.g. `stakater.com/kind`.
+4. Multi Tenant Operator (MTO) creates required Namespaces with tenant labels e.g. `stakater.com/tenant: <TENANT_NAME>`.
 
 5. Admin creates a Template that contains a Service Account. This service account is used by Secret Store to access Vault. Notice the label `stakater.com/vault-access: "true"`.
 
