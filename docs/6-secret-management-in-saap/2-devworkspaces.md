@@ -19,7 +19,6 @@ Read More at https://access.redhat.com/products/red-hat-openshift-dev-spaces
 
 A devworkspace is created automatically whenever a new user signs up as discussed in the previous section. In order to access your users devworkspace, do the following steps:
 
-### From Forecastle
 1. Search `devspaces` in search bar at top right corner, Click the URL to devspaces, If prompted Select `Login via Openshift` and Login to cluster.
 
     ![forecastle-devspaces](images/forecastle-devspaces.png)
@@ -32,24 +31,9 @@ A devworkspace is created automatically whenever a new user signs up as discusse
 
       ![devspace-homepage](images/devspace-homepage.png)  
 
-### From OpenShift Cluster
-
-1. Find the URL to openshift console via forecastle and Login to the cluster.
-
-    ![Forecastle-OpenShift-console](images/forecastle-openshift-console.png)
-
-3. Open the search page from `Home > Search`, Click Resources and search `Devworkspace`. Select `Devworkspace` to show only `Devworkspace` resources. Make sure to change to sandbox project/namespace called `<TENANT_NAME>-<USER_NAME>-<DOMAIN_NAME>-sandbox` on the top bar e.g. if you are registered as mustafa@stakater.com, project name will be `mustafa-mustafa-stakater-sandbox`.
-
-    ![console-devworkspace-search](images/console-devworkspace-search.png)
-
-4. Open the Devworkspace resource in your sandbox namespace and click on yaml. Scroll down to `status` field, Check if workspace is running, Look for `mainURL` field. This URL is the link to your provisioned Devsworkspace as part of automation discussed earlier. Open the URL and verify if the Devworkspace is accessible. 
-
-    ![console-devworkspace-yaml](images/console-devworkspace-yaml.png)
-    ![devspace-homepage](images/devspace-homepage.png)
-
 ## Switch between projects
 
-We specified the GitLab repositories deployed for your user into our Devworkspace as projects. 
+Gitlab repositories are added as projects in the DevWorkspace.
 
 You can view these projects in bottom left window named `Che (workspace)`. Browse the content by clicking on either of folders.
 
@@ -57,7 +41,7 @@ You can view these projects in bottom left window named `Che (workspace)`. Brows
 
 ## Accessing the terminal
 
-Open terminal on your DevSpace by pressing ` Ctrl+` ` or clicking Terminal > New Terminal from top menu as highlighted below. 
+Open terminal on your DevSpace by pressing `` Ctrl+` `` or clicking Terminal > New Terminal from top menu as highlighted below. 
 
 ![devspace-new-terminal](images/devspace-new-terminal.png)
 
@@ -68,7 +52,9 @@ You will be prompted to `Select a container to create a new terminal`. Select `s
 
 ## oc login to cluster
 
-Your user is already logged to the cluster in the devworkspace. If you still have any issues, perform the following steps:
+Your user is already logged to the cluster in the devworkspace. 
+
+If you still have any issues, perform the following steps:
 
 1. Find the URL to openshift console via forecastle and Login to the cluster.
 

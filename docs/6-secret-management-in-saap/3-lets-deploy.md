@@ -1,15 +1,11 @@
 # Lets deploy our application 
 > Forecastle : https://forecastle-stakater-forecastle.apps.devtest.vxdqgl7u.kubeapp.cloud/
 
-In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart Review UI` is a light weight application for management of product reviews. This application also requires backend `Nordmart Review` which is already deployed in your Tenant. This application implements review functionality for the products; it provides CRUDS API for reviews.
+In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart Review UI` is a light weight application for management of product reviews. This application also requires backend `Nordmart Review` which is already deployed in your Tenant. This application implements review functionality for the products; it provides CRUD API for reviews.
 
-1. You can view the application by Logging In to the cluster & opening `<TENANT_NAME>-dev` project from projects.
+1. Log In to the cluster & open `<TENANT_NAME>-dev` project from projects. Navigate to `Networking > Routes` from sidebar and copy the `review` route.
 
-    --Add Image--
-
-2. Navigate to routes and copy the route. 
-
-    --Add Image--
+    ![console-review-route](images/console-review-route.png)
 
     Alternatively, you can run the following command in your devspace terminal. 
 
@@ -17,12 +13,10 @@ In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart 
 
 3. Make a curl request on the URL copied in the previous step. You should get a similar response as below.
 
-        curl http://$REVIEW_API:8080/api/review/329199
+        curl https://$REVIEW_API/api/review/329199 | jq '.body'
+    ![curl-response](images/curl-response.png)
 
-    --Add Image--
-
-
-Great Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
+Great! Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
 
 ## Deploy Nordmart Review UI
 
@@ -30,7 +24,7 @@ Great Now that we know our `Nordmart Review` backend is working, lets deploy the
 
 2. Make you are in `/projects/stakater-nordmart-review-ui` by running `pwd` 
 
-3. Open the value file `deploy/values.yaml` in the editor and update the `application.deployment.env.REVIEW_API` value with the URL you copied above.
+3. Open the value file `deploy/values.yaml` in the editor and update the `application.deployment.env.REVIEW_API` value with the URL you copied in above section for the curl request.
 
     ![devspace-deploy-value-update-review-api](images/devspace-deploy-value-update-review-api.png)
 
