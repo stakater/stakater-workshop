@@ -27,7 +27,7 @@ We will register our SAAP user in the following section.
 ![verfication](./images/verification.png)
 
 5. Use the link provided in the email to verify your user.
-   /home/asfa/Downloads/verification.png
+  
 ![email](./images/email.png)
 
 6. Once you've verified your user, you will be redirected to SAAP. 
