@@ -212,16 +212,16 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
       - In your DevWorkspace, open stakater-nordmart-review-ui repository code, and navigate to deploy folder.
       - Open and edit values.yaml
-      - Add the following yaml, and under `deployment.env`, add environment variable for the secret we added in previous step
+      - Add the following yaml under `deployment.env`, this adds an environment variable to the deployment. 
 
          ```yaml
                PAGE_TITLE:
                   valueFrom:
                      secretKeyRef:
-                     name: review-ui
-                     key: page_title
+                       name: review-ui
+                       key: page_title
          ```
-      - In your terminal, run this command again to deploy application with updated configuration for environment variable:
+      - Save the file. In your terminal, run this command again to deploy application with updated configuration for environment variable:
       
       ```
        helm template deploy/ -n <TENANT>-dev | oc apply -f -
@@ -229,8 +229,6 @@ Following is detailed step by step sequence diagram of MTO works together with V
       - Application pod will be recreated. Refresh the application route to see the change. The title will be updated!
 
       ![Review-UI](./images/ui-with-secret.png)
-
-
 
 
 ## Updating Secrets
@@ -244,7 +242,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
       - Open your secret path and click on <b>Create new version</b>
       - Update the secret value as shown below and click <b>Save</b>.
 
-   ![Vault](./images/update-secret.png)
+      ![Vault](./images/update-secret.png)
 
    2. External Secrets Operator (ESO) polls the Vault API for update after a defined time interval. This time interval is defined in the ExternalSecret CR created previously. 
 
@@ -262,7 +260,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    7. Stakater Reloader performs a rolling upgrade on Kubernetes resource(s). Application is up again with the updated secret values in no time! 
 
-   ![Review-UI](./images/ui-with-updated-secret.png)
+      ![Review-UI](./images/ui-with-updated-secret.png)
 
 ## Deprecating Secrets
 
@@ -282,7 +280,6 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    - If deletion policy is set to `Retain`, Kubernetes Secret will not be deleted even after secret data on the defined path is removed from Vault.
    - If deletion policy is set to `Delete`, Kubernetes Secret will be deleted and application will fall back to using default values.  
-
 
 ## 🖼️ Big Picture
 
