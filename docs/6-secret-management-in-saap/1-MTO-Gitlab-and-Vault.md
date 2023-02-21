@@ -43,7 +43,7 @@ We will register our SAAP user in the following section.
 8. Open up `Openshift Console` from the links displayed on forecastle page. This should take you to the Openshift web console.
    ![console](./images/console.png)
 
-7. SAAP will have already configured some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
+9. SAAP will have already configured some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
 
 
 ## Tenant creation
