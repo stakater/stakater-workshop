@@ -40,6 +40,12 @@ We will register our SAAP user in the following section.
 8. Once you've verified your user, you will be redirected to SAAP.
    SAAP will then configure some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
 
+## Automation
+When we user signs up, following automation is performed by Multi Tenant Operator (MTO):
+- Tenant is created.
+- Gitlab Group is created, repositories are imported into the group.
+- Devworkspace is created.
+- ArgoCD application for gitops is deployed.
 
 ## Tenant creation
 
