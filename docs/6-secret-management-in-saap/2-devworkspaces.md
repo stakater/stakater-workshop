@@ -68,3 +68,4 @@ If you still have any issues, perform the following steps:
 3. Open terminal on your DevSpace by pressing `` Ctrl+` `` or clicking `Terminal > New Terminal` from top menu, Select `stack-tl500` as container, Select working directory. Paste the command copied in the previous step to login.
 
     ![terminal-oc-login](images/terminal-oc-login.png)
+
