@@ -9,7 +9,7 @@ We will register our SAAP user in the following section.
 > [SAAP Login](https://dev.cloud.stakater.com/)
 # Setting up your account
 
-1. Open up SAAP login provided above. You will see the following screen. Type in stalater-devtest in Enterprise domain.
+1. Open up SAAP login provided above. You will see the following screen. Type in stakater-devtest in Enterprise domain.
    ![stk-devtest](./images/stk-devtest.png)
 
 2. Now click on three dots next to 'devtest' and select forecastle from the dropdown. This will take you to Forecastle.
