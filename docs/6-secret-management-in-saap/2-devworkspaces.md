@@ -19,9 +19,11 @@ Read More at https://access.redhat.com/products/red-hat-openshift-dev-spaces
 
 A devworkspace is created automatically whenever a new user signs up as discussed in the previous section. In order to access your users devworkspace, do the following steps:
 
-1. Search `devspaces` in search bar at top right corner, Click the URL to devspaces, If prompted Select `Login via Openshift` and Login to cluster.
+1. Search `devspaces` in search bar at top right corner, Click the URL to devspaces, If prompted Select `Login via Openshift` and You will be redirected to Devspace dashboard.
 
     ![forecastle-devspaces](images/forecastle-devspaces.png)
+    ![devspace-login-via-openshift](images/devspace-login-via-openshift.png)
+    
 
 2. Click on Workspaces from sidebar, You will see a devworkspace named `<USER_NAME>-<DOMAIN>`, Click on `Open` to open the devworkspace.
 
