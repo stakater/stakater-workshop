@@ -46,7 +46,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
        }      
 4. Multi Tenant Operator (MTO) creates required Namespaces with tenant labels e.g. `stakater.com/tenant: <TENANT_NAME>`.
 
-5. Admin creates a Template that contains a Service Account. This service account is used by Secret Store to access Vault. Notice the label `stakater.com/vault-access: "true"`.
+5. Admin creates a Template that contains a Service Account. This Service Account is used by Secret Store to access Vault. Notice the label `stakater.com/vault-access: "true"`.
 
          apiVersion: tenantoperator.stakater.com/v1alpha1
          kind: Template
@@ -63,7 +63,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
          
    More Info on Template: https://docs.cloud.stakater.com/content/sre/multi-tenant-operator/usecases/template.html
 
-6. Admin creates a TemplateGroupInstance which deploys Template (containing ServiceAccount) to namespaces based on selector. We specify tenant label `stakater.com/kind` in selector. This will deploy ServiceAccount in tenant namespaces. This ServiceAccount is required by SecretStore to access Vault.
+6. Admin creates a TemplateGroupInstance which deploys Template (containing Service Account) to namespaces based on selector. We specify tenant label `stakater.com/tenant` in selector. This will deploy ServiceAccount in tenant namespaces. This ServiceAccount is required by SecretStore to access Vault.
 
          apiVersion: tenantoperator.stakater.com/v1alpha1
          kind: TemplateGroupInstance
@@ -83,7 +83,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
    
 7. Multi Tenant Operator (MTO) deploys the Template resources to selector defined in TemplateGroupInstance.
 
-8. Admin creates a Template that contains a Secret Store (external secrets custom resource). The SecretStore is namespaced and specifies how to access the external API which is Vault. Templates are used to share resources among namespaces.
+8. Admin creates a Template that contains a Secret Store (External Secret CR). The SecretStore is namespaced and specifies how to access the external API which is Vault. Templates are used to share resources among namespaces.
 
          apiVersion: tenantoperator.stakater.com/v1alpha1
          kind: Template
