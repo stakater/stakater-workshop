@@ -7,7 +7,7 @@ SAAP enables developers to control and configure the entire cloud development lo
 
 We will register our SAAP user in the following section.
 
-   > [SAAP Login](https://dev.cloud.stakater.com/)
+> [SAAP Login](https://dev.cloud.stakater.com/)
 # Setting up your account
 
 1. Open up SAAP login provided above. You will see the following screen. Type in stakater-devtest in Enterprise domain.
@@ -70,7 +70,7 @@ Let's look at all of these projects.
 This namespace is used for deploying the workshop related resource needed. It contains a custom resource called 'Gitlab'
 The Gitlab resource creates your gitlab group and a clones a few repositories in your gitlab group.
 
-##### [ORGANIZATION]-[YOUR-NAME]-sandbox project:
+#### [ORGANIZATION]-[YOUR-NAME]-sandbox project:
 As the name suggest, this is playground namespace/project for the users in a tenant. Every user belonging to a tenant will have his/her own sandbox
 The namespace will also run our devworkspace. You will learn more about devworkspace in the proceeding sections.
 
@@ -115,8 +115,8 @@ Let's view these things in action!
 2. Hit the url, you will be redirected to gitlab.
    ![gitlab-projects](./images/gitlab-projects.png)
 
-3. You will see three repositories. The nordmart-review and nordmart-review-ui and apps-gitops-config. 
-  
+3. You will see three repositories. The nordmart-review and nordmart-review-ui and apps-gitops-config.
+
 
 
 ## Devworkspace Creation
@@ -136,7 +136,16 @@ For now, you can check the devworkspace by opening [forecastle](https://forecast
 
 The apps-gitops-config repository we saw in your gitlab acts as a gitops repository for deploying the nordmart-review application.
 
-Behind the scene, we created an argocd application for you that point to this repository. Argocd will deploy the nordmart review app in [ORGANIZATION]-dev namespace. 
+Behind the scene, we created an argocd application for you that point to this repository. Argocd will deploy the nordmart review app in [ORGANIZATION]-dev namespace.
 
-You can check this by going to openshift console, switching the project to [ORGANIZATION]-dev and opening up the pods. You should se nordmart-review pod running
+Let's see the ArgoCD application that is created.
 
+1. Open [forecastle](https://forecastle-stakater-forecastle.apps.devtest.vxdqgl7u.kubeapp.cloud/)
+
+2. Search for ArgoCD and open up the url. You will be redirected to ArgoCD.
+
+3. There, you will be able to see an app named [ORGANIZATION]-nordmart-apps-gitops-config.
+
+![argocd-app](./images/argocd-app.png)
+
+![argocd-app](./images/argocd-app-2.png)
