@@ -46,16 +46,17 @@ If you now go to the projects page of SAAP, you will start seeing three projects
 * [ORGANIZATION]-workshop-parent
 
 Let's look at all of these projects.
-[ORGANIZATION]-workshop-parent
+
+#### [ORGANIZATION]-workshop-parent
 
 This namespace is used for deploying the workshop related resource needed. It contains a custom resource called 'Gitlab'
 The Gitlab resource creates your gitlab group and a clones a few repositories in your gitlab group.
 
-[ORGANIZATION]-[YOUR-NAME]-sandbox project:
+##### [ORGANIZATION]-[YOUR-NAME]-sandbox project:
 As the name suggest, this is playground namespace/project for the users in a tenant. Every user belonging to a tenant will have his/her own sandbox
 The namespace will also run our devworkspace. You will learn more about devworkspace in the proceeding sections.
 
-[ORGANIZATION]-dev
+#### [ORGANIZATION]-dev
 This is the namespace in which we will be deploying our demo app in section 3. For now, this will be empty
 
 ## Tenant-Vault Integration
@@ -83,9 +84,16 @@ Let's take a look at vault and try to log in:
 
 ## Gitlab Automation 
 
-* Added group
-* Cloned projects
-* Added gitops repo
+As already mentioned, a Gitlab resource in deployed in the [ORGANIZATION]-workshop-parent namespace. This resource automates the following things for us:
+
+* Adds a gitlab group with your organization/tenant name in gitlab.
+* Cloned the projects needed in this showcase to your gitlab group.
+
+Let's view these things in action!
+
+1. To open Gitlab, head over to forecastle again and search for Gitlab.
+2. Hit the user, you will be redirected to gitlab.
+3. 
 _TODO_
 
 ## Devworkspace Creation
