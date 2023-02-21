@@ -204,19 +204,23 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    8. External Secrets Operator (ESO) creates a Kubernetes Secret. 
 
-   9. Kubernetes Secret is consumed by Application. Following are the steps to add a new environment variable to your application.
+   9. Navigate to `Workloads > Secrets` on openshift console and search for the secret created above.
+
+      ![console-es-synced](images/console-es-synced.png)
+
+   9. Secret is consumed by the Application. Following are the steps to add the secret as environment variable to your application.
 
       - In your DevWorkspace, open stakater-nordmart-review-ui repository code, and navigate to deploy folder.
       - Open and edit values.yaml
       - Add the following yaml, and under `deployment.env`, add environment variable for the secret we added in previous step
 
-      ```
-         PAGE_TITLE:
-            valueFrom:
-               secretKeyRef:
-                  name: review-ui
-                  key: page_title
-      ```
+         ```yaml
+               PAGE_TITLE:
+                  valueFrom:
+                     secretKeyRef:
+                     name: review-ui
+                     key: page_title
+         ```
       - In your terminal, run this command again to deploy application with updated configuration for environment variable:
       
       ```
