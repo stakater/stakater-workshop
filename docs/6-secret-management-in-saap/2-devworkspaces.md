@@ -52,7 +52,9 @@ You will be prompted to `Select a container to create a new terminal`. Select `s
 
 ## oc login to cluster
 
-Your user is already logged to the cluster in the devworkspace. If you still have any issues, perform the following steps:
+Your user is already logged to the cluster in the devworkspace. 
+
+If you still have any issues, perform the following steps:
 
 1. Find the URL to openshift console via forecastle and Login to the cluster.
 
