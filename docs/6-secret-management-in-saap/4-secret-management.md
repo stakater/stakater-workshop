@@ -8,37 +8,7 @@ In this section, we will walk through secret management workflow in SAAP.
 
 Following is detailed step by step sequence diagram of MTO works together with Vault and ESO:
 
-```mermaid
-sequenceDiagram
-autonumber
-actor User
-actor Admin
-participant MTO as Multi-Tenant Operator
-participant Namespace
-participant SA as Service Account
-participant SecretStore
-participant Vault
-Admin->>MTO: Creates a Tenant
-MTO->>Vault: Creates a path in Vault with Tenant name to store key/value secrets
-MTO->>Vault: Creates Policy with Tenant name
-MTO->>Namespace: Creates Namespaces with Tenant labels
-Admin->>MTO: Creates ServiceAccount Template with Vault access label
-Admin->>MTO: Creates ServiceAccount TemplateGroupInstance [TGI]
-MTO->>SA: Uses TGIs to create ServiceAccount in all Tenant Namespaces
-Admin->>MTO: Creates SecretStore Template
-Admin->>MTO: Creates SecretStore TemplateGroupInstance
-MTO->>SecretStore: Uses TGIs to create SecretStore in all Tenant Namespaces
-MTO->>Vault: Creates Role with Namespace name
-MTO->>Vault: Binds Policy & ServiceAccount with Role when vault-access label found
-User->>Vault: Adds key/value pair secret
-User->>ExternalSecret: Adds ExternalSecret CR
-ESO->>+ExternalSecret: watches for CR creation
-ExternalSecret-->>-ESO: CR created, ESO to reconcile
-ESO-->SecretStore: ESO uses defined SecretStore & instantiates Vault request using ServiceAccount for authentication
-ESO->>+Vault: Requests to fetch secret data from path
-Vault->>-ESO: Returns secret data
-ESO->>Secret: Creates a k8s Secret
-```
+![Complete-Workflow](./images/complete-workflow.png)
 
 ### Workflow
 
@@ -171,26 +141,7 @@ ESO->>Secret: Creates a k8s Secret
 
 ## Creating Secrets
 
-```mermaid 
-sequenceDiagram
-autonumber
-actor User
-participant Vault
-participant SecretStore
-participant ExternalSecret
-participant ESO as External Secret Operator 
-participant k8s Secret
-participant app as Application
-User->>Vault: Adds key/value pair secret
-User->>ExternalSecret: Adds ExternalSecret CR
-ESO->>+ExternalSecret: watches for CR creation
-ExternalSecret-->>-ESO: CR created, ESO to reconcile
-ESO-->SecretStore: ESO uses defined SecretStore & instanciates Vault request using ServiceAccount for authentication
-ESO->>+Vault: Requests to fetch secret data from path
-Vault->>-ESO: Returns secret data
-ESO->>Secret: Creates a k8s Secret
-Secret ->> app: Secret is used by Application
-```
+![Creation Workflow](./images/creation-workflow.png)
 
    ### Workflow 
 
@@ -252,7 +203,7 @@ Secret ->> app: Secret is used by Application
 
    8. External Secrets Operator (ESO) creates a Kubernetes Secret. 
 
-   9. Kubernetes Secret is consumed by Application.
+   9. Kubernetes Secret is consumed by Application. Following are the steps to add a new environment variable to your application.
 
       - In your DevWorkspace, open stakater-nordmart-review-ui repository code, and navigate to deploy folder.
       - Open and edit values.yaml
@@ -262,34 +213,33 @@ Secret ->> app: Secret is used by Application
          PAGE_TITLE:
             valueFrom:
                secretKeyRef:
-                  name: nordmart-review-ui-page-title
+                  name: review-ui
                   key: page_title
       ```
+      - In your terminal, run this command again to deploy application with updated configuration for environment variable:
+      
+      ```
+       helm template deploy/ -n <TENANT>-dev | oc apply -f -
+      ```
+      - Application pod will be recreated. Refresh the application route to see the change. The title will be updated!
+
+      ![Review-UI](./images/ui-with-secret.png)
+
+
 
 
 ## Updating Secrets
 
-```mermaid
-sequenceDiagram
-autonumber
-actor User
-participant Vault
-participant ESO as External Secret Operator
-participant secret as k8s Secret
-participant Reloader
-participant App as Application 
-User->>Vault: Updates a key/value secret
-ESO->>+Vault: watches for updated secret data
-Vault-->>-ESO: Receives update, reconciles
-ESO->>Secret: Updates Secret
-Reloader->>+secret: watches for updated Secret
-secret-->>-Reloader: Receives update, reconciles
-Reloader->>App: Performs rolling upgrade
-```
+![Updation workflow](./images/updation-workflow.png)
 
    ### Workflow
 
    1. User modifies the secret data in Vault.
+
+      - Open your secret path and click on <b>Create new version</b>
+      - Update the secret value as shown below and click <b>Save</b>.
+
+   ![Vault](./images/update-secret.png)
 
    2. External Secrets Operator (ESO) polls the Vault API for update after a defined time interval. This time interval is defined in the ExternalSecret CR created previously. 
 
@@ -307,20 +257,11 @@ Reloader->>App: Performs rolling upgrade
 
    7. Stakater Reloader performs a rolling upgrade on Kubernetes resource(s). Application is up again with the updated secret values in no time! 
 
+   ![Review-UI](./images/ui-with-updated-secret.png)
+
 ## Deprecating Secrets
 
-```mermaid
-sequenceDiagram
-autonumber
-actor User
-participant Vault
-participant ESO as External Secret Operator
-participant Secret 
-User->>Vault: Removes a Secret
-ESO->>+Vault: watches for updated Secret
-Vault-->>-ESO: Update recieved
-ESO->>Secret: Removes k8s Secret
-```
+![Deprecation Workflow](./images/deprecation-workflow.png)
 
    ### Workflow
 
