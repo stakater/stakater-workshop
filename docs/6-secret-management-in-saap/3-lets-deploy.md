@@ -47,7 +47,7 @@ Great! Now that we know our `Nordmart Review` backend is working, lets deploy th
 
 ## View the application (UI)
 
-7. Navigate to `Networking > Routes` and copy route named `review-web` and open it in your browser. Make sure the project is `<TENANT_NAME>-dev`
+6. Navigate to `Networking > Routes` and copy route named `review-web` and open it in your browser. Make sure the project is `<TENANT_NAME>-dev`
 
     ![console-routes](./images/console-routes.png)
 
@@ -63,5 +63,4 @@ Great! Now that we know our `Nordmart Review` backend is working, lets deploy th
 
 Great Work, Now that we have deployed our application, we can move on to our main topic secrets management.
 
-## 🔮 Learning Outcomes
 

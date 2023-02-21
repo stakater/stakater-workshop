@@ -151,14 +151,18 @@ Following is detailed step by step sequence diagram of MTO works together with V
    
       - In the path of your tenant, Click `Create Secret`, add path of secret, and add key-value pair as shown below.
 
+         - Path for secret: `nordmart-review-ui-page-title`
+         - Secret key: `page_title`
+         - Secret value: `Review (Secret from Vault)`
+
   ![create-secret](./images/create-secret.png)
 
    2. Add ExternalSecret CR
 
-      - Select the `+` sign in the top right corner of the console
-
-         ![the-plus-sign](./images/the-plus-sign.png)
-      - Paste the following YAML and replace the `<TENANT_NAME>` and click `Create`
+      - In your DevWorkspace, open `stakater-nordmart-review-ui` project
+      - Navigate to `deploy` folder & open `templates` folder
+      - Create a new file and name it `external-secret.yaml`
+      - Paste the following yaml in this file and save it.
 
       ```yaml
       apiVersion: external-secrets.io/v1alpha1
@@ -180,6 +184,11 @@ Following is detailed step by step sequence diagram of MTO works together with V
           - key: nordmart-review-ui-page-title
 
       ```
+
+      - Run the following command again to deploy ExternalSecret CR
+
+      `helm template deploy/ -n <TENANT>-dev | oc apply -f -`
+
    3. External Secrets Operator (ESO) watches for ExternalSecret CR creation.
 
    4. When a new CR is created, External Secrets Operator (ESO) reconciles it from the provided spec.
@@ -239,6 +248,9 @@ Following is detailed step by step sequence diagram of MTO works together with V
    1. User modifies the secret data in Vault.
 
       - Open your secret path and click on <b>Create new version</b>
+         - Secret key: `page_title`
+         - Secret value: `Review (updated secret from Vault)`
+
       - Update the secret value as shown below and click <b>Save</b>.
 
       ![Vault](./images/update-secret.png)
@@ -275,8 +287,4 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
       - If deletion policy is set to `Retain`, Kubernetes Secret will not be deleted even after secret data on the defined path is removed from Vault.
       - If deletion policy is set to `Delete`, Kubernetes Secret will be deleted and application will fall back to using default values.  
-
-## 🖼️ Big Picture
-
-## 🔮 Learning Outcomes
 
