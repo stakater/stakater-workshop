@@ -12,21 +12,26 @@ We will register our SAAP user in the following section.
 
 1. To register your user, open the SAAP login page
 
-![saap-login](./images/saap-login.png)
+![saap-login](./images/saap-login-1.png)
 
 2. Select Register User from the above menu. This will redirect you to the registration form.
 
 3. Fill in the form with required details and hit Register. 
+
    *Note* Use your professional email for registration
 
 ![registration-form](./images/registration-form.png)
 
-4. Once you hit enter, you will be redirected  to SAAP and a verification email will be sent to you on the email address you used in step 3.
+4. Once you hit enter, the following screen will be shown, and you will a verification email will be sent to you on the email address you used in step 3.
+
+![verfication](./images/verification.png)
 
 5. Use the link provided in the email to verify your user.
-![some-image] _TODO_
+   /home/asfa/Downloads/verification.png
+![email](./images/email.png)
 
-6. Once you've registered your user, SAAP will configure some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
+6. Once you've verified your user, you will be redirected to SAAP. 
+SAAP will then configure some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
 
 
 ## Tenant creation 
