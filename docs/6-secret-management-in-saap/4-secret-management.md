@@ -12,7 +12,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
 ### Workflow
 
-> Note: You dont have to perform this workflow. Service Account
+> Note: You dont have to perform this workflow. Service Account and Secret Store are already deployed
 
 1. Administrator creates a Tenant on the cluster.
 2. Multi Tenant Operator (MTO) enables a key value (kv) path for the Tenant. Login to Vault to view your tenant key value (kv) path.
@@ -149,39 +149,38 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    1. User adds a Key/Value pair secret data to a path in Vault.
    
-      - In the path of your tenant, Click `Create Secret`, add path of secret, and add key-value pairs.
+      - In the path of your tenant, Click `Create Secret`, add path of secret, and add key-value pair as shown below.
 
   ![create-secret](./images/create-secret.png)
 
    2. Add ExternalSecret CR
 
-      - Login to the `OpenShift console`.
       - Select the `+` sign in the top right corner of the console
 
-      ![the-plus-sign](./images/the-plus-sign.png)
+         ![the-plus-sign](./images/the-plus-sign.png)
       - Paste the following YAML and replace the `<TENANT_NAME>` and click `Create`
 
-   ```
-    apiVersion: external-secrets.io/v1alpha1
-    kind: ExternalSecret
-    metadata:
-      name: review-ui-secret
-      namespace: <TENANT_NAME>-build
-    spec:
-      secretStoreRef:
-        kind: SecretStore
-        name: tenant-vault-secret-store
-      refreshInterval: "1m"
-      target:
-        name: review-ui
-        creationPolicy: 'Owner'
-        deletionPolicy: Retain
-        template:
-          type: Opaque
-      dataFrom:
-        - key: nordmart-review-ui-page-title
+      ```yaml
+      apiVersion: external-secrets.io/v1alpha1
+      kind: ExternalSecret
+      metadata:
+        name: review-ui-secret
+        namespace: <TENANT_NAME>-dev
+      spec:
+        secretStoreRef:
+          kind: SecretStore
+          name: tenant-vault-secret-store
+        refreshInterval: "1m"
+        target:
+          name: review-ui
+          creationPolicy: 'Owner'
+          deletionPolicy: Retain
+          template:
+            type: Opaque
+        dataFrom:
+          - key: nordmart-review-ui-page-title
 
-   ```
+      ```
    3. External Secrets Operator (ESO) watches for ExternalSecret CR creation.
 
    4. When a new CR is created, External Secrets Operator (ESO) reconciles it from the provided spec.
