@@ -43,21 +43,35 @@ Once you've verified your user, a tenant bearing the name of organization will b
 If you now go to the projects page of SAAP, you will start seeing three projects:
 * [ORGANIZATION]-dev
 * [ORGANIZATION]-[YOUR-NAME]-sandbox  
-* devworkspace-operator
+* [ORGANIZATION]-workshop-parent
 
-For now, let's ignore the devworkspace-operator namespace and look at the other two.
+Let's look at all of these projects.
+[ORGANIZATION]-workshop-parent
+
+This namespace is used for deploying the workshop related resource needed. It contains a custom resource called 'Gitlab'
+The Gitlab resource creates your gitlab group and a clones a few repositories in your gitlab group.
 
 [ORGANIZATION]-[YOUR-NAME]-sandbox project:
 As the name suggest, this is playground namespace/project for the users in a tenant. Every user belonging to a tenant will have his/her own sandbox
+The namespace will also run our devworkspace. You will learn more about devworkspace in the proceeding sections.
 
 [ORGANIZATION]-dev
 This is the namespace in which we will be deploying our demo app in section 3. For now, this will be empty
 
 ## Tenant-Vault Integration
 
-* Tenant vault access enabled
-* Path created in vault for adding secrets
-* OIDC configured as a login mechanism
+Multi Tenant Operator has an integration with vault that allow the tenant users to add and use secrets from vault in their tenant namespaces while keeping the data hidden from others.
+When Tenant vault access is enabled in Tenant, MTO does the following two things:
+
+* Creates path in vault for adding secrets. For instance, if the tenant name is 'stakater', a path stakater will be added to vault.
+* Configures OIDC as a login mechanism allowing Single Sign On
+
+Let's take a look at vault and try to log in:
+
+1. Open up Forecastle.
+2. Search for Vault and click the link that is displayed
+3. Once you see the log in screen, use OIDC from the dropdown menu in 'Method' and hit enter.
+4. You will be logged in to vault. You should now be able to see a path with you tenant name in vault.
 
 ## Gitlab Automation 
 
