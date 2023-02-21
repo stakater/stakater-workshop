@@ -31,6 +31,6 @@
 
     ![mattermost-tenant-team-page](images/mattermost-tenant-team-page.png)
 
-7. A common team is created for all the members, so that they can easily have across tenant members conversation.
+7. A common team is created for all the members, so that they can easily reach each other across tenant members conversation.
 
     ![mattermost-common-team-page](images/mattermost-common-team-page.png)

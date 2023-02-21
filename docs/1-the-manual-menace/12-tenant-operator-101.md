@@ -32,7 +32,7 @@ The idea of Tenant Operator is to use namespaces as independent sandboxes, where
 
 We will now collaborate on [workshop-infra-gitops-config](https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/stakater/workshop-infra-gitops-config) repository which is already setup to bootstrap your access via the creation of your cluster tenants.  
 
-**You will need to come up with a name for your tenant and we will need them to be unique amongst the participants, but if you are here as a group you can also share a tenant. We would recommend using your company name for simplicity but feel free to use something factitious if preferred.**  
+**You will need to come up with a name for your tenant and we will need them to be unique amongst the participants, but if you are here as a group you can also share a tenant. We would recommend using your company name for simplicity but feel free to use something fictious if preferred.**
 
   > Everywhere we see `<TENANT_NAME>` in the rest of the tutorial we need to replace it with your new tenant name.  
 
@@ -54,7 +54,7 @@ We will now collaborate on [workshop-infra-gitops-config](https://gitlab.apps.de
 
    GitLab will redirect you to the group's home page, once the group is created.
 
-    > Remember that `group name` should match your **tenant name**. 
+    > Remember that `group name` should match your chosen **`TENANT_NAME`**.
 
 
 3. If you are working as a team, and you haven't already done at group creation, you can add your colleagues to this group now.   
@@ -78,16 +78,13 @@ Gitlab will prompt you and ask you if you want to fork the repo. Click `Fork Pro
 
 Gitlab will now take you to your forked repository.
 
-5. Click the vertical 3 dot menu next to `workshop` in the left hand navigation and select `New File`
-
-   ![edit-fork-in-web-ide](./images/workshop-3-dots.png)
+5. Create a new file in the repository by clicking on the `New File` button
 
 6. Name the file using the following directory prefix `workshop/tenant-operator-config/tenants/<TENANT-NAME>.yaml`.  
    
-   > We need to update `<TENANT_NAME>` with name you came up with earlier.    
+   > Replace `<TENANT_NAME>` with the name you came up with earlier.
 
    ![mto-filename](./images/mto-filename.png)
-
 
 7. Paste the code below to create a new tenant with a user, a list of ArgoCD “watched” repositories belonging to the tenant and its accompanying namespaces.
 
@@ -143,7 +140,7 @@ Gitlab will now take you to your forked repository.
 
       ![mto-merge](./images/mto-merge1.png)
 
-11. you can leave everything as default and click `Create merge request`.
+11. Leave everything as default and click `Create merge request`.
 
       ![mto-merge](./images/mto-merge.png)
 
