@@ -16,7 +16,6 @@ In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart 
         curl https://$REVIEW_API/api/review/329199 | jq '.body'
     ![curl-response](images/curl-response.png)
 
-
 Great Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
 
 ## Deploy Nordmart Review UI
