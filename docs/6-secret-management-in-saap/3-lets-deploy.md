@@ -3,11 +3,7 @@
 
 In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart Review UI` is a light weight application for management of product reviews. This application also requires backend `Nordmart Review` which is already deployed in your Tenant. This application implements review functionality for the products; it provides CRUDS API for reviews.
 
-1. You can view the application by Logging In to the cluster & opening `<TENANT_NAME>-dev` project from projects.
-
-    --Add Image--
-
-2. Navigate to routes and copy the route. 
+1. Log In to the cluster & open `<TENANT_NAME>-dev` project from projects. Navigate to `Networking > Routes` from sidebar and copy the `review` route.
 
     --Add Image--
 
@@ -17,10 +13,8 @@ In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart 
 
 3. Make a curl request on the URL copied in the previous step. You should get a similar response as below.
 
-        curl https://$REVIEW_API/api/review/329199
-
-
-    --Add Image--
+        curl https://$REVIEW_API/api/review/329199 | jq '.body'
+    ![curl-response](images/curl-response.png)
 
 
 Great Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
