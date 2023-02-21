@@ -5,7 +5,7 @@ In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart 
 
 1. Log In to the cluster & open `<TENANT_NAME>-dev` project from projects. Navigate to `Networking > Routes` from sidebar and copy the `review` route.
 
-    --Add Image--
+    ![console-review-route](images/console-review-route.png)
 
     Alternatively, you can run the following command in your devspace terminal. 
 
@@ -16,7 +16,7 @@ In this section, we will deploy the `Nordmart Review UI` Application. `Nordmart 
         curl https://$REVIEW_API/api/review/329199 | jq '.body'
     ![curl-response](images/curl-response.png)
 
-Great Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
+Great! Now that we know our `Nordmart Review` backend is working, lets deploy the `Nordmart Review UI`
 
 ## Deploy Nordmart Review UI
 
@@ -24,7 +24,7 @@ Great Now that we know our `Nordmart Review` backend is working, lets deploy the
 
 2. Make you are in `/projects/stakater-nordmart-review-ui` by running `pwd` 
 
-3. Open the value file `deploy/values.yaml` in the editor and update the `application.deployment.env.REVIEW_API` value with the URL you copied above.
+3. Open the value file `deploy/values.yaml` in the editor and update the `application.deployment.env.REVIEW_API` value with the URL you copied in above section for the curl request.
 
     ![devspace-deploy-value-update-review-api](images/devspace-deploy-value-update-review-api.png)
 
