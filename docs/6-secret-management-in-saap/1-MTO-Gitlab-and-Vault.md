@@ -128,3 +128,4 @@ The apps-gitops-config repository we saw in your gitlab acts as a gitops reposit
 Behind the scene, we created an argocd application for you that point to this repository. Argocd will deploy the nordmart review app in [ORGANIZATION]-dev namespace. 
 
 You can check this by going to openshift console, switching the project to [ORGANIZATION]-dev and opening up the pods. You should se nordmart-review pod running
+
