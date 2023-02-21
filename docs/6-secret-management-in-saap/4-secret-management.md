@@ -12,6 +12,8 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
 ### Workflow
 
+> Note: You dont have to perform this workflow. Service Account
+
 1. Administrator creates a Tenant on the cluster.
 2. Multi Tenant Operator (MTO) enables a key value (kv) path for the Tenant. Login to Vault to view your tenant key value (kv) path.
    - Access Vault from  [Forecastle](https://forecastle-stakater-forecastle.apps.devtest.vxdqgl7u.kubeapp.cloud) console, search `Vault` and open the `Vault` tile.
@@ -129,7 +131,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
    More Info on TemplateGroupInstance : https://docs.cloud.stakater.com/content/sre/multi-tenant-operator/usecases/deploying-templates.html
 
-10. Multi Tenant Operator (MTO) deploys the Template resources to selector defined in TemplateGroupInstance.
+10. Multi Tenant Operator (MTO) deploys the Template resources to tenant namespaces based on selector defined in TemplateGroupInstance.
 
 11. Multi Tenant Operator (MTO) creates a role in Vault with namespace name. This role binds the read policy with service account on the cluster. This allows service account used by SecretStore to access Tenant key/value secret data. 
 
