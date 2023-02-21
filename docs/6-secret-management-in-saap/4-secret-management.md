@@ -133,7 +133,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
 
 10. Multi Tenant Operator (MTO) deploys the Template resources to tenant namespaces based on selector defined in TemplateGroupInstance.
 
-11. Multi Tenant Operator (MTO) creates a role in Vault with namespace name. This role binds the read policy with service account on the cluster. This allows service account used by SecretStore to access Tenant key/value secret data. 
+11. Multi Tenant Operator (MTO) creates a role in Vault with namespace name.  
 
 12. Multi Tenant Operator (MTO) binds Service Account (with `stakater.com/vault-access: 'true'` label) and Policy with Role. Later, External Secrets Operator uses this Service Account to instantiate request to Vault for secret data.
 
