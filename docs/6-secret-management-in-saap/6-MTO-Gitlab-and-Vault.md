@@ -69,9 +69,17 @@ When Tenant vault access is enabled in Tenant, MTO does the following two things
 Let's take a look at vault and try to log in:
 
 1. Open up Forecastle.
-2. Search for Vault and click the link that is displayed
+2. Search for Vault and click the link that is displayed.
+
+![forecastle-vault](./images/forecastle-vault.png)
+
 3. Once you see the log in screen, use OIDC from the dropdown menu in 'Method' and hit enter.
+
+![oidc](./images/oidc-login.png)
+
 4. You will be logged in to vault. You should now be able to see a path with you tenant name in vault.
+
+![stakater-vault](./images/stakater-vault.png)
 
 ## Gitlab Automation 
 
