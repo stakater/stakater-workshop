@@ -6,39 +6,44 @@ SAAP - Stakater App Agility Platform is Kubernetes based fully managed DevSecOps
 SAAP enables developers to control and configure the entire cloud development loop in order to ship software faster!
 
 We will register our SAAP user in the following section.
-> [SAAP Login](https://dev.cloud.stakater.com/)
+
+   > [SAAP Login](https://dev.cloud.stakater.com/)
 # Setting up your account
 
 1. Open up SAAP login provided above. You will see the following screen. Type in stakater-devtest in Enterprise domain.
+
    ![stk-devtest](./images/stk-devtest.png)
 
-2. Now click on three dots next to 'devtest' and select forecastle from the dropdown. This will take you to Forecastle.
-   ![saap](./images/saap.png)
-
-
-3. Open up 'Openshift Console' from the links displayed on forecastle. You will be taken to the cluster login page.
-   ![console](./images/console.png)
+2. Select `Register User` from the above menu. This will redirect you to the registration form.
 
    ![saap-login](./images/saap-login-1.png)
 
-4. Select Register User from the above menu. This will redirect you to the registration form.
+3. Fill in the form with required details and hit Register.
 
-5. Fill in the form with required details and hit Register.
+   > **Note:** Use your professional email for registration
 
-   *Note* Use your professional email for registration
+   ![registration-form](./images/registration-form.png)
 
-![registration-form](./images/registration-form.png)
+4. Once you hit enter, the following screen will be shown, and you will a verification email will be sent to you on the email address you used in step 3.
 
-6. Once you hit enter, the following screen will be shown, and you will a verification email will be sent to you on the email address you used in step 3.
+   ![verfication](./images/verification.png)
 
-![verfication](./images/verification.png)
+5. Use the link provided in the email to verify your user.
 
-7. Use the link provided in the email to verify your user.
+   ![email](./images/email.png)
 
-![email](./images/email.png)
+6. Once you've verified your user, you are ready to log in to SAAP   cloud dashboard. Login to [SAAP cloud dashboard](https://dev.cloud.stakater.com/) by using the same domain used earlier for registration
 
-8. Once you've verified your user, you will be redirected to SAAP.
-   SAAP will then configure some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
+   ![stk-devtest](./images/stk-devtest.png)
+
+7. You will be logged in and will see the `devtest` cluster in the cluster's list. Now click on kebab menu icon next to `devtest` and select forecastle from the dropdown. This will take you to `Forecastle`.
+
+   ![saap](./images/saap.png)
+
+8. Open up `Openshift Console` from the links displayed on forecastle page. This should take you to the Openshift web console.
+   ![console](./images/console.png)
+
+7. SAAP will have already configured some things for you behind the scenes. Brief explanation of these configuration are provided in the following sections.
 
 
 ## Tenant creation
