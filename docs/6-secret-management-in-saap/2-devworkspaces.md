@@ -33,7 +33,7 @@ A devworkspace is created automatically whenever a new user signs up as discusse
 
 ## Switch between projects
 
-We specified the GitLab repositories deployed for your user into our Devworkspace as projects. 
+Gitlab repositories are added as projects in the DevWorkspace.
 
 You can view these projects in bottom left window named `Che (workspace)`. Browse the content by clicking on either of folders.
 
