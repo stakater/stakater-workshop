@@ -1,4 +1,4 @@
-# Exercise 6 - SECRET MANAGEMENT 
+# Exercise 6 - SECRETS MANAGEMENT 
 
 > Forecastle : https://forecastle-stakater-forecastle.apps.devtest.vxdqgl7u.kubeapp.cloud/
 
