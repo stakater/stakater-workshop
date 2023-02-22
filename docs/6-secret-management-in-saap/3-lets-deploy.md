@@ -28,10 +28,6 @@ Great! Now that we know our `Nordmart Review` backend is working, lets deploy th
 
     ![devspace-deploy-value-update-review-api](images/devspace-deploy-value-update-review-api.png)
 
-    Alternatively, you can run the following command in your terminal, 
-        
-        yq -i -y --arg REVIEW_API "$REVIEW_API" '.application.deployment.env.REVIEW_API.value|=$REVIEW_API' deploy/values.yaml
-
 4. Before we deploy the application, lets build dependencies of Helm chart in deploy/ folder.
 
         helm repo add stakater https://stakater.github.io/stakater-charts
