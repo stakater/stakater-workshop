@@ -165,7 +165,7 @@ Following is detailed step by step sequence diagram of MTO works together with V
       - Paste the following yaml in this file and save it.
 
       ```yaml
-      apiVersion: external-secrets.io/v1alpha1
+      apiVersion: external-secrets.io/v1beta1
       kind: ExternalSecret
       metadata:
         name: review-ui-secret
