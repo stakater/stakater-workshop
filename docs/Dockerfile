@@ -1,4 +1,4 @@
-FROM node:16.14-alpine
+FROM node:16.20-alpine
 
 RUN apk add --no-cache tini && npm install -g docsify-cli@4.4.3
 
